@@ -1,60 +1,56 @@
 # WebMaker
 
-Local AI-assisted toolkit that crawls a public business website, analyzes it, and builds a modern WordPress demo you can review on your machine.
+Turn an existing business website into a modern local WordPress demo, with AI support and human approval before anything goes live on the demo.
 
-## Why it exists
+Built for presenting website improvements clearly: crawl the current site, review concrete content changes, and show a working WordPress result on your machine.
 
-Service businesses often need a clearer website before they invest in a full redesign. WebMaker turns an existing public site into a local WordPress demo with human-approved content changes, so you can present concrete before/after work without deploying to production.
+## Why WebMaker
 
-## Key capabilities
+Most local businesses already have a website. The hard part is showing what a better version could look like without rebuilding everything from scratch or pushing unfinished work to production.
 
-- **Crawl & analyze** — Playwright crawl of a target site (and optional competitors), screenshots, and structured page extraction
-- **Business + competitor analysis** — Claude for business profiling, DeepSeek for competitor structure (configurable providers)
-- **OP-Content review** — AI content recommendations with human tick-to-approve before anything is published to the demo
-- **Theme selection** — curated WordPress theme / starter template application for the local demo
-- **Local WordPress demo** — portable PHP + MariaDB workflow for an offline presentation site
-- **QA hooks** — content and visual review agents for the generated demo
+WebMaker closes that gap. You point it at a public URL, analyze the business and competitors, approve the copy you want, and render a local demo you can walk through with a client.
 
-WebMaker is a **local development / presentation tool**, not a hosted SaaS and not an automatic production deployer.
+## What it does
 
-## Architecture overview
+- **Crawl and analyze** public pages with Playwright (screenshots, structure, assets)
+- **Profile the business** with Claude and map competitor structure with DeepSeek
+- **Review content** in OP-Content: AI suggestions, you decide what gets applied
+- **Pick a theme** from curated WordPress starters for the local demo
+- **Render approved copy** into a local WordPress site (no AI rewrite at render time)
+- **Run QA checks** on content and visual quality before you present
 
-Primary V2 path (orchestrated agents; agents do not call each other):
+This is a local presentation and development tool. It is not a hosted SaaS and it does not auto-deploy to a client’s production server.
+
+## How the pipeline works
 
 ```text
 Target URL (+ optional competitors)
-  → Crawl / acquisition artifacts
-  → Business analysis (Claude)
-  → Competitor analysis (DeepSeek)
-  → OP-Content review (Claude) + human approval
-  → Design pattern selection (GPT + catalog fallback)
-  → Live demo render (no AI — approved copy only)
-  → QA (content + visual)
+  -> Crawl / acquisition artifacts
+  -> Business analysis (Claude)
+  -> Competitor analysis (DeepSeek)
+  -> OP-Content review (Claude) + your approval
+  -> Design pattern selection (GPT + catalog fallback)
+  -> Live demo render (approved copy only)
+  -> QA (content + visual)
 ```
 
-Artifacts are stored under `projects/<slug>/artifacts/`. Schemas live in `webmaker/schemas/`. See [`docs/architecture.md`](docs/architecture.md) for the full pipeline.
+Artifacts land in `projects/<slug>/artifacts/`. Full detail is in [`docs/architecture.md`](docs/architecture.md).
 
-## Technology stack
+## Stack
 
-| Layer | Technologies |
-|-------|----------------|
+| Layer | Choice |
+|-------|--------|
 | Language | Python 3.10+ |
-| UI | Tkinter desktop app (`webmake`) |
-| Crawl | Playwright |
-| AI | Anthropic Claude, DeepSeek, OpenAI GPT (Gemini adapter optional / unused on V2 path) |
+| Desktop UI | Tkinter (`webmake`) |
+| Crawling | Playwright |
+| AI | Claude, DeepSeek, OpenAI GPT |
 | Config | Pydantic Settings, `.env`, `config/webmaker.yaml` |
-| Demo site | WordPress via portable PHP + MariaDB + WP-CLI |
+| Demo site | WordPress (portable PHP + MariaDB + WP-CLI) |
 | Tests | pytest |
 
-## Installation
+## Quick start
 
-### Prerequisites
-
-- Windows 10/11 (current setup scripts target PowerShell)
-- Python 3.10+
-- Network access to install dependencies and (optionally) AI provider APIs
-
-### Setup
+**You need:** Windows 10/11, Python 3.10+, and API keys for the providers you want to use.
 
 ```powershell
 cd WebMaker
@@ -63,10 +59,9 @@ python -m venv .venv
 pip install -r requirements.txt
 python -m playwright install chromium
 Copy-Item .env.example .env
-# Edit .env and add at least CLAUDE_API_KEY, DEEPSEEK_API_KEY, GPT_API_KEY as needed
 ```
 
-Install the local WordPress runtime (PHP, MariaDB, WordPress tree):
+Add your keys to `.env`, then install the local WordPress runtime:
 
 ```powershell
 .\setup\setup.ps1
@@ -75,36 +70,36 @@ python run.py verify
 
 ## Configuration
 
-Copy `.env.example` → `.env` and set keys locally. **Never commit `.env`.**
+Copy `.env.example` to `.env` and fill in your own keys. Never commit `.env`.
 
 | Variable | Purpose |
 |----------|---------|
-| `CLAUDE_API_KEY` | Business analysis + OP-Content (V2) |
-| `DEEPSEEK_API_KEY` | Competitor structure analysis |
-| `GPT_API_KEY` | Design pattern selection + visual QA |
-| `GEMINI_API_KEY` | Optional / legacy path |
-| `WP_ADMIN_USER` / `WP_ADMIN_PASS` | Local demo WordPress admin (first setup) |
-| `WEB_PORT` / `DB_PORT` | Local server ports (defaults `8080` / `3307`) |
+| `CLAUDE_API_KEY` | Business analysis and OP-Content |
+| `DEEPSEEK_API_KEY` | Competitor structure |
+| `GPT_API_KEY` | Design patterns and visual QA |
+| `GEMINI_API_KEY` | Optional / legacy |
+| `WP_ADMIN_USER` / `WP_ADMIN_PASS` | Local WordPress admin (first setup) |
+| `WEB_PORT` / `DB_PORT` | Local ports (defaults `8080` / `3307`) |
 
-See `config/webmaker.yaml` and `webmaker/config/settings.py` for the full settings surface.
+More options live in `config/webmaker.yaml` and `webmaker/config/settings.py`.
 
 ## Usage
 
 ```powershell
-# Start MariaDB + PHP (WordPress at http://localhost:8080)
+# WordPress demo at http://localhost:8080
 python run.py start
 
-# Launch Tk UI + open the demo browser
+# Desktop UI + browser
 .\webmake
 ```
 
-V2 UI tabs:
+Three tabs in the UI:
 
-1. **Crawl & Analyze** — crawl target + competitors, run AI analysis
-2. **OP-Content** — review tips, approve copy, render into the demo
-3. **Theme** — apply a curated theme/template to the local WordPress site
+1. **Crawl & Analyze** – crawl the target (and competitors), run analysis
+2. **OP-Content** – review tips, approve copy, render into the demo
+3. **Theme** – apply a curated theme to the local WordPress site
 
-CLI helpers:
+Also useful:
 
 ```powershell
 python run.py verify
@@ -112,23 +107,19 @@ python run.py info
 python run.py stop
 ```
 
-## Example
+## Try a demo flow
 
-1. Set API keys in `.env`
-2. Run `.\webmake`
-3. Enter a **public** target URL and a project name (for example `DemoBiz`)
-4. Optionally paste competitor URLs
+1. Put your API keys in `.env`
+2. Start with `.\webmake`
+3. Enter a public target URL and a project name (for example `DemoBiz`)
+4. Add competitor URLs if you want
 5. Run **Crawl & Analyze**
-6. Open **OP-Content**, approve tips you want applied
-7. Render approved copy into the local WordPress demo at `http://localhost:8080`
+6. Open **OP-Content**, tick what you approve
+7. Render and open `http://localhost:8080`
 
-Project state appears under `projects/<slug>/` on your machine (not published with this repo by default).
+Project files stay under `projects/<slug>/` on your machine. That folder is gitignored so client work never ships with the repo.
 
-## Screenshots / demo
-
-Add portfolio screenshots here when you publish (for example a blurred/anonymized before→after of a demo). Do not upload client screenshots that contain personal data unless you have permission.
-
-## Project structure
+## Project layout
 
 ```text
 WebMaker/
@@ -136,49 +127,48 @@ WebMaker/
 ├── LICENSE
 ├── .env.example
 ├── .gitignore
-├── app.py / run.py          Entry points
-├── webmake.ps1 / webmake.cmd
+├── app.py / run.py              Entry points
+├── webmake.ps1 / webmake.cmd    Launcher
 ├── requirements.txt
 ├── pyproject.toml
 ├── config/webmaker.yaml
-├── webmaker/                Python package (agents, modules, UI, schemas)
-├── prompts/                 Markdown system prompts
-├── setup/                   Environment + WordPress setup scripts
-├── tests/                   Unit + integration tests
-├── docs/                    Architecture documentation
-├── projects/                Local project workspaces (fully gitignored)
-├── assets/ / templates/ / plugins/ / outputs/
+├── webmaker/                    Core package (agents, modules, UI, schemas)
+├── prompts/                     System prompts
+├── setup/                       Environment + WordPress setup
+├── tests/
+├── docs/
+├── projects/                    Local workspaces (gitignored)
 └── (local only) .venv/, bin/, db/, wordpress/, cache/, logs/, Library/, Binary/
 ```
 
-## Testing
+## Tests
 
 ```powershell
 .\.venv\Scripts\Activate.ps1
 pytest tests/unit/ -q
 ```
 
-Integration tests expect the local MariaDB/PHP stack to be running.
+Integration tests need MariaDB and PHP running locally.
 
-## Limitations
+## Honest limits
 
-- Optimized for **local Windows** setup scripts; other OS support is not packaged yet
-- Requires third-party AI API keys for the full V2 pipeline
-- WordPress, PHP, and MariaDB are installed locally and are **not** shipped in the public git tree
-- Output quality depends on source-site structure and human review of OP-Content tips
-- Not a one-click production host or SEO ranking guarantee
+- Setup scripts are built for Windows first
+- The full pipeline needs third-party AI API keys
+- WordPress, PHP, and MariaDB are installed locally; they are not in this git repo
+- Demo quality still depends on the source site and your OP-Content approvals
+- This tool prepares a local demo. It does not promise rankings or production hosting
 
-## Roadmap
+## What’s next
 
-- Cleaner first-run setup and cross-platform install docs
-- Optional anonymized sample project for demos without client data
-- Continued hardening of render materialization (approved copy only on demo pages)
+- Smoother first-run setup and clearer install docs
+- An anonymized sample project for demos without client data
+- Stronger render checks so only approved copy reaches the demo pages
 
 ## License
 
-Proprietary source-available — see [`LICENSE`](LICENSE).
+Proprietary source-available. See [`LICENSE`](LICENSE).
 
-You may view and evaluate the code for personal, non-commercial learning.
-**Commercial use requires prior written permission** from the copyright holder.
+You can view and run the code for personal, non-commercial evaluation.
+**Commercial use needs prior written permission.**
 
-Third-party software (WordPress, themes/plugins, PHP, MariaDB) remains under their own licenses when you install them locally via setup.
+WordPress, themes, plugins, PHP, and MariaDB keep their own licenses when you install them through setup.
