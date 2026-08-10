@@ -74,10 +74,10 @@ More detail: [`docs/architecture.md`](docs/architecture.md) and [`ARCHITECTURE.m
 
 Launch with `.\webmake` (or `python run.py webmake`). The Tk app currently has four tabs:
 
-1. **Crawl** – acquire and validate the website package (no AI)
-2. **Migrate** – theme/template selection and migration / modernizer build
-3. **Analyze** – business + competitor analysis
-4. **OP-Content** – review recommendations, approve tips, render into the demo
+1. **Crawl:** acquire and validate the website package (no AI)
+2. **Migrate:** theme/template selection and migration / modernizer build
+3. **Analyze:** business + competitor analysis
+4. **OP-Content:** review recommendations, approve tips, render into the demo
 
 There is also a CLI for the local stack (`python run.py start|stop|verify|info`).
 
