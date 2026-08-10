@@ -1,0 +1,17 @@
+|  # | Website                                                                            | Why I chose it                                                                           |
+| -: | ---------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------- |
+|  1 | [https://www.neat.com](https://www.neat.com)                                       | One of the cleanest service-company designs on the web. Excellent hero, whitespace, CTA. |
+|  2 | [https://www.mollymaid.com](https://www.mollymaid.com)                             | Beautiful local service layout with strong trust sections.                               |
+|  3 | [https://www.mrhandyman.com](https://www.mrhandyman.com)                           | Great service cards, icons, and homepage flow.                                           |
+|  4 | [https://www.servicemasterclean.com](https://www.servicemasterclean.com)           | Premium cleaning service design with excellent section composition.                      |
+|  5 | [https://www.servpro.com](https://www.servpro.com)                                 | Excellent emergency-service design and contact sections.                                 |
+|  6 | [https://www.rainbowrestores.com](https://www.rainbowrestores.com)                 | Strong image usage and modern service presentation.                                      |
+|  7 | [https://www.1800gotjunk.com](https://www.1800gotjunk.com)                         | Outstanding hero, CTA, and conversion-focused layout.                                    |
+|  8 | [https://www.collegehunkshaulingjunk.com](https://www.collegehunkshaulingjunk.com) | One of the best-designed junk-removal websites. Great process and service sections.      |
+|  9 | [https://www.gotjunk.com](https://www.gotjunk.com)                                 | Premium service layout and image composition.                                            |
+| 10 | [https://www.windowhero.com](https://www.windowhero.com)                           | Excellent home-service website with strong visual hierarchy.                             |
+| 11 | [https://www.pauldavis.com](https://www.pauldavis.com)                             | Great balance of imagery, whitespace, and trust elements.                                |
+| 12 | [https://www.trugreen.com](https://www.trugreen.com)                               | Very polished service cards and landing-page structure.                                  |
+| 13 | [https://www.maidbrigade.com](https://www.maidbrigade.com)                         | Modern typography, cards, and CTA placement.                                             |
+| 14 | [https://www.zerorez.com](https://www.zerorez.com)                                 | Beautiful section spacing and conversion flow.                                           |
+| 15 | [https://www.handymanconnection.com](https://www.handymanconnection.com)           | Professional local-service layout with strong navigation and trust sections.             |

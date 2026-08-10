@@ -1,0 +1,50 @@
+WebMaker Proprietary Source-Available License
+Copyright (c) 2026 August
+
+All rights reserved.
+
+## Summary
+
+You may view and study this source code for personal learning and non-commercial
+evaluation. Any commercial use requires prior written permission from the
+copyright holder.
+
+## Permitted without prior permission
+
+1. View, download, and study the source code.
+2. Run the software locally for personal, non-commercial evaluation.
+3. Fork or modify the code privately for personal learning.
+
+## Requires prior written permission
+
+Any of the following require explicit written permission from the copyright
+holder before you do them:
+
+1. Commercial use of any kind (including internal business use, client work,
+   consulting, SaaS, paid services, or monetized derivatives).
+2. Redistribution of the software or substantial portions of it.
+3. Publishing modified or unmodified copies (except private forks used only
+   for personal learning).
+4. Removing or altering copyright, license, or attribution notices.
+5. Using the name "WebMaker", related branding, or project identity in a way
+   that suggests endorsement without permission.
+
+## How to request commercial permission
+
+Contact the copyright holder and describe the intended commercial use.
+Do not assume permission until you receive written approval.
+
+## No warranty
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+## Third-party components
+
+WordPress, PHP, MariaDB, themes, plugins, and other dependencies you install
+locally remain under their own licenses and are not covered by this license.

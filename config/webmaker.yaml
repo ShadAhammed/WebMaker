@@ -1,0 +1,63 @@
+# ──────────────────────────────────────────────────────────────────────────────
+# WebMaker — Default Configuration
+# ──────────────────────────────────────────────────────────────────────────────
+# This file documents all available settings and their defaults.
+# Override any value by setting the corresponding environment variable in .env
+# or as a shell environment variable.
+#
+# Environment variable names are listed as comments next to each key.
+# ──────────────────────────────────────────────────────────────────────────────
+
+# ── Web server ────────────────────────────────────────────────────────────────
+server:
+  host: "localhost"       # WEB_HOST
+  port: 8080             # WEB_PORT
+
+# ── Database ──────────────────────────────────────────────────────────────────
+database:
+  host:     "127.0.0.1"     # DB_HOST
+  port:     3307            # DB_PORT
+  name:     "webmaker_wp"   # DB_NAME
+  user:     "root"          # DB_USER
+  password: ""             # DB_PASSWORD
+
+# ── WordPress ─────────────────────────────────────────────────────────────────
+wordpress:
+  admin_user:  "admin"              # WP_ADMIN_USER
+  admin_email: "admin@webmaker.local" # WP_ADMIN_EMAIL
+  # admin_pass is set via WP_ADMIN_PASS env variable (never store in plain text)
+
+# ── AI providers ──────────────────────────────────────────────────────────────
+ai:
+  # Preferred provider: gemini | claude | deepseek | auto
+  # auto = use first available provider in order below
+  provider: "auto"       # AI_PROVIDER
+
+  gemini:
+    model: "gemini-3.1-pro-preview"     # GEMINI_MODEL
+    # api_key set via GEMINI_API_KEY env variable
+
+  claude:
+    model: "claude-sonnet-4-6"          # CLAUDE_MODEL
+    # api_key set via CLAUDE_API_KEY env variable
+
+  deepseek:
+    model: "deepseek-chat"              # DEEPSEEK_MODEL
+    # api_key set via DEEPSEEK_API_KEY env variable
+
+# ── Crawler ───────────────────────────────────────────────────────────────────
+crawler:
+  max_depth:       3    # CRAWLER_MAX_DEPTH
+  max_pages:       50   # CRAWLER_MAX_PAGES
+  timeout_s:       30   # CRAWLER_TIMEOUT
+  concurrency:     3    # CRAWLER_CONCURRENCY
+  respect_robots:  true # CRAWLER_RESPECT_ROBOTS
+
+# ── Competitor analysis ───────────────────────────────────────────────────────
+competitor:
+  max_count: 5          # COMPETITOR_MAX
+
+# ── Logging ───────────────────────────────────────────────────────────────────
+logging:
+  level:    "INFO"          # LOG_LEVEL  (DEBUG | INFO | WARNING | ERROR)
+  filename: "webmaker.log"

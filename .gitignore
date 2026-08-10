@@ -1,0 +1,153 @@
+# =============================================================================
+# WebMaker — public-repo .gitignore
+# Keeps the local workspace intact while preventing private / generated /
+# machine-specific material from being committed.
+# =============================================================================
+
+# ----- Secrets & local config ------------------------------------------------
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.p12
+*.pfx
+*.key
+id_rsa
+id_rsa.*
+id_ed25519
+id_ed25519.*
+credentials.json
+service-account*.json
+secrets/
+**/secrets/
+**/credentials/
+
+# ----- Python ----------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+dist/
+build/
+.Python
+*.pyo
+*.pyd
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+
+# Test / coverage / type caches
+.pytest_cache/
+.benchmarks/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+coverage.xml
+.tox/
+.nox/
+.cache/
+
+# ----- IDE / editor / agent --------------------------------------------------
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.cursor/
+*.code-workspace
+
+# ----- OS --------------------------------------------------------------------
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ----- Logs ------------------------------------------------------------------
+logs/
+*.log
+**/logs/
+
+# ----- Local runtime / databases / binaries (install via setup) --------------
+# Portable PHP, MariaDB data, WP-CLI cache — recreated by setup/setup.ps1
+bin/
+db/
+.wp-cli/
+
+# Full local WordPress tree (multi-GB; includes uploads, plugins, config)
+wordpress/
+# If someone later vendors a slim WP skeleton, keep sample only:
+!wordpress/wp-config-sample.php
+
+# ----- Caches & generated outputs --------------------------------------------
+cache/
+!cache/.gitkeep
+outputs/
+!outputs/.gitkeep
+tmp/
+temp/
+*.tmp
+*.temp
+*.bak
+*.orig
+
+# Scratch / debug files at repo root
+tmp_*
+_tmp_*
+*_tmp.*
+scratch_*
+debug_*
+
+# ----- Project workspaces (never commit — all contents stay local) -----------
+projects/
+
+# ----- Design reference library (third-party site screenshots / scrapes) -----
+Library/**
+!Library/.gitkeep
+!Library/Websites.txt
+
+# ----- Private experiments / portfolio prototypes ----------------------------
+Binary/
+
+# ----- Media / archives that should not land in git by accident --------------
+*.mp4
+*.webm
+*.mov
+*.avi
+*.zip
+*.7z
+*.rar
+*.tar
+*.tar.gz
+*.tgz
+*.gguf
+*.onnx
+*.pt
+*.pth
+*.h5
+*.safetensors
+*.sqlite
+*.sqlite3
+*.db
+
+# Tax / identity documents (never commit)
+**/Freelance Tax*.pdf
+**/*Tax Number*.pdf
+**/*Steuernummer*
+**/*Ausweis*
+**/*Passport*
+
+# ----- Optional local-only docs (agent memory / private notes / audits) ------
+docs/AGENT_CONTEXT.md
+docs/PUBLIC_RELEASE_AUDIT.md
+**/AGENT_CONTEXT.md
+**/NOTES.private.md
+**/TODO.private.md

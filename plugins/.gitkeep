@@ -1,0 +1,7 @@
+# WebMaker user plugins directory
+# Place optional *.py plugins here. Each file may expose:
+#   PLUGIN = MyPlugin()
+# or
+#   def create_plugin() -> Plugin: ...
+#
+# The core pipeline runs with zero plugins installed.
