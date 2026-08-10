@@ -95,9 +95,9 @@ python run.py start
 
 Three tabs in the UI:
 
-1. **Crawl & Analyze** – crawl the target (and competitors), run analysis
-2. **OP-Content** – review tips, approve copy, render into the demo
-3. **Theme** – apply a curated theme to the local WordPress site
+1. **Crawl & Analyze:** crawl the target (and competitors), run analysis
+2. **OP-Content:** review tips, approve copy, render into the demo
+3. **Theme:** apply a curated theme to the local WordPress site
 
 Also useful:
 
